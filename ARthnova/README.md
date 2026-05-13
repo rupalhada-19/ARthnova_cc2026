@@ -24,5 +24,14 @@ npx http-server
 - [p5.js 2.0](https://beta.p5js.org/)
 - [p5.js Reference](https://p5js.org/reference/)
 
-# online interaction on zoom - 9.15
+# day1
+# phase1 ideation - 7.50
+# online interaction on meet - 9.15
 # first commit - 12.47
+# day2
+# phase2 ideation - 4.53
+# all frames commit - 8.42
+# team interaction video- 9.00
+# online interaction on meet - 10.35
+# sound interaction added- 12.20
+# ppt prepration- 12.50

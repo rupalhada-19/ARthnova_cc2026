@@ -533,10 +533,6 @@ let factorySound;
 let currentSlide = 1;
 let sustainableLevel = 20;
 
-
-// ==========================================
-// ANIMATION VARIABLES (Global)
-// ==========================================
 // Slide 1
 let birdX1 = 500;
 let birdX2 = 550;
@@ -564,11 +560,10 @@ let ecoBirds = [];
 let ecoClouds = [];
 let riverOffset = 0;
 
-// ==========================================
 // SETUP
-// ==========================================
 function setup() {
-  createCanvas(800, 600);
+  createCanvas (800,600);
+  frameRate(60);
   factorySound = loadSound("factory.mp3");
   textAlign(CENTER, CENTER);
 
@@ -613,18 +608,16 @@ function draw() {
   } else if (currentSlide === 2) {
     drawSlide2();
   } else if (currentSlide === 3) {
-    drawSlide3(); // Final Future slide
+    drawSlide3(); 
   }
 }
-
-// ==========================================
 // SLIDE 1: INTRO 
-// ==========================================
+
 function drawSlide1() {
   let cx = [400, 385, 410, 390, 420, 395, 415, 380, 410, 390, 405, 385, 415, 395, 410, 400];
   let cy = [0, 40, 80, 120, 160, 200, 240, 280, 320, 360, 400, 440, 480, 520, 560, 600];
 
-  // BAD FUTURE (Left Side)
+  
   noStroke();
   fill(80, 60, 60);
   rect(0, 0, width, height);
@@ -785,9 +778,8 @@ function drawSlide1() {
   text("TAKE INITIATIVE", width / 2, btnY + (btnH / 2));
 }
 
-// ====================================================== 
 // SLIDE 2: SDG 13 (Interactive Pollution)
-// ======================================================
+
 function drawSlide2() {
   for (let y = 0; y < 300; y++) {
     let c = lerpColor(color(220, 235, 255), color(130, 150, 170), y / 300);
@@ -1003,10 +995,8 @@ function drawSlide2() {
     textStyle(NORMAL);
   }
 }
-
-// ==========================================
 // SLIDE 3: FINAL MULTIPLE FUTURES (No Earths)
-// ==========================================
+
 function drawSlide3() {
   cursor(ARROW);
   
@@ -1080,8 +1070,6 @@ function drawSlide3() {
         b.x = -40;
       }
     }
-    
-    // (Earth removed from here)
 
     fill(0, 100, 0);
     textSize(35);
@@ -1090,7 +1078,6 @@ function drawSlide3() {
     textStyle(NORMAL);
     
   } else {
-    // ---- DESTRUCTION SCENE FOR BAD FUTURE (Matched to Slides 1 & 2) ----
     
     // Toxic Sky
     for (let y = 0; y < 300; y++) {
@@ -1203,9 +1190,7 @@ function drawSlide3() {
   text("RESTART", width / 2, height - 45);
 }
 
-// ==========================================
 // KEYBOARD INTERACTIONS
-// ==========================================
 function keyPressed() {
   if (currentSlide === 2 && showInstructions) { 
     if (key === 'c' || key === 'C') {
@@ -1242,9 +1227,7 @@ function keyPressed() {
   }
 }
 
-// ==========================================
 // MOUSE INTERACTIONS
-// ==========================================
 function mouseDragged() {
   if (currentSlide === 2 && showInstructions && draggedGarbageIndex !== -1) { 
     garbages[draggedGarbageIndex].x = mouseX;
@@ -1368,10 +1351,7 @@ function mousePressed() {
     }
   }
 }
-
-// ==========================================
 // METER DRAWING LOGIC
-// ==========================================
 function drawMeters() {
   fill(255);
   textSize(15);
@@ -1385,10 +1365,8 @@ function drawMeters() {
   fill(0, 255, 0);
   rect(width - 320, height - 30, sustainableLevel * 2, 15);
 }
-
-// ======================================================
 // UNIVERSAL DRAWING FUNCTIONS 
-// ======================================================
+
 function drawNormalHouse(x, y, tap) {
   fill(245, 235, 220);
   rect(x, y, 80, 60);
@@ -1583,9 +1561,6 @@ function drawBird(x, y) {
   arc(x + 12, y, 12, 6, PI, TWO_PI);
 }
 
-// ======================================================
-// USER'S GOOD FUTURE GRAPHICS (For Final Slide)
-// ======================================================
 function drawEcoCloud(x, y) {
   fill(255, 240);
   ellipse(x, y, 70, 50);
