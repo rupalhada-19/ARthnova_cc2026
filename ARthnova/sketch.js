@@ -520,13 +520,19 @@
 // }
 
 // Earth 2050 - Climate Action Interactive Project
+// FULL MODIFIED VERSION WITH FACTORY SOUND
+
+// Earth 2050 - Climate Action Interactive Project
 // Created by: Giri Deva
 // Institution: Avantika University
 // Final Update: Removed Earths, matched Bad Future with Slide 1 & 2, adjusted to 800x600 canvas.
 
+let pollutionLevel = 80;
+let factorySound;
+
 let currentSlide = 1;
 let sustainableLevel = 20;
-let pollutionLevel = 80;
+
 
 // ==========================================
 // ANIMATION VARIABLES (Global)
@@ -563,6 +569,7 @@ let riverOffset = 0;
 // ==========================================
 function setup() {
   createCanvas(800, 600);
+  factorySound = loadSound("factory.mp3");
   textAlign(CENTER, CENTER);
 
   // Initialize smoke particles
@@ -1257,9 +1264,21 @@ function mouseReleased() {
 }
 
 function mousePressed() {
+  userStartAudio();
   if (currentSlide === 1) {
-    if (mouseX > width / 2 - 110 && mouseX < width / 2 + 110 && mouseY > 500 && mouseY < 565) {
-      currentSlide = 2;
+    if (mouseX > width / 2 - 110 &&
+  mouseX < width / 2 + 110 &&
+  mouseY > 500 &&
+  mouseY < 565
+) {
+
+  currentSlide = 2;
+
+  // START SOUND
+  if (!factorySound.isPlaying()) {
+    factorySound.loop();
+    factorySound.setVolume(0.5);
+  }
     }
   } else if (currentSlide === 2) {
     
@@ -1280,9 +1299,19 @@ function mousePressed() {
       let btnW = 340;
       let btnH = 50;
       
-      if (mouseX > btnX && mouseX < btnX + btnW && mouseY > btnY && mouseY < btnY + btnH) { 
-        currentSlide = 3; 
-        return; 
+      if (mouseX > btnX &&
+  mouseX < btnX + btnW &&
+  mouseY > btnY &&
+  mouseY < btnY + btnH
+) {
+
+  // STOP SOUND
+  if (factorySound.isPlaying()) {
+    factorySound.stop();
+  }
+
+  currentSlide = 3;
+  return; 
       }
     }
 
@@ -1332,6 +1361,9 @@ function mousePressed() {
         { x: 340, y: 520, type: 'can', r: 0, disposed: false },
         { x: 420, y: 540, type: 'bag', r: 0, disposed: false }
       ];
+      if (factorySound.isPlaying()) {
+        factorySound.stop();}
+
       currentSlide = 1;
     }
   }
