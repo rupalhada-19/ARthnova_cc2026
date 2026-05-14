@@ -563,7 +563,7 @@ let riverOffset = 0;
 // SETUP
 function setup() {
   createCanvas (800,600);
-  frameRate(60);
+  
   factorySound = loadSound("factory.mp3");
   textAlign(CENTER, CENTER);
 
